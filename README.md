@@ -2,7 +2,7 @@ Unidade 3: Navegação
 =================
 
 <!--ts-->
-  WordApp
+  WordsApp
    
 <!--ts-->
   
