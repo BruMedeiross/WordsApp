@@ -86,7 +86,7 @@ class WordAdapter(private val letterId: String, context: Context) :
         holder.button.text = item
         holder.button.setOnClickListener {
             //criando um URI para a consulta da pesquisa
-            val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+            val queryUrl: Uri = Uri.parse("${WordListFragment.SEARCH_PREFIX}${item}")
             val intent = Intent(Intent.ACTION_VIEW, queryUrl)//A ACTION_VIEW é uma intent genérica que aceita um URI, no seu caso, um endereço da Web.
             context.startActivity(intent)  //INTENT IMPLICITA, ABRINDO ATIVIDADE FORA DO APP
         }

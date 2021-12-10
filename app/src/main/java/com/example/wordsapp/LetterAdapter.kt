@@ -24,6 +24,7 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -66,15 +67,23 @@ class LetterAdapter :
         holder.button.text = item.toString()
 
         holder.button.setOnClickListener {
-            //Crie uma Intent, transmitindo o contexto e o nome da classe da atividade de destino.
+            val action = LetterListFragmentDirections.actionLetterListFragmentToWordListFragment4(
+                letter = holder.button.text.toString()
+            )
+            holder.view.findNavController().navigate(action)
+        }
+    }
+            /* substituido pela acao de navegação do jetpack
+            Crie uma Intent, transmitindo o contexto e o nome da classe da atividade de destino.
             val context = holder.view.context
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.LETTER, holder.button.text.toString())
+            intent.putExtra(WordListFragment.LETTER, holder.button.text.toString())
             context.startActivity(intent)
             // extra é um dado, como um número ou uma string, que recebe um nome para ser recuperado depois.
             // o método putExtra() aceita uma String,
-        }
-    }
+        // */
+
+
 
     // Setup custom accessibility delegate to set the text read with
     // an accessibility service

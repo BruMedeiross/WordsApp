@@ -2,34 +2,43 @@ package com.example.wordsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.wordsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private var isLinearLayoutManager = true
 
-
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        // Retrieve the LETTER from the Intent extras
+
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        setupActionBarWithNavController(navController)
+    }
+
+        override fun onSupportNavigateUp(): Boolean {
+            return navController.navigateUp() || super.onSupportNavigateUp()
+        }
+
+
+}
+
+/* tod a funcionalidade foi movida para LetterListFragment
+
+
+
+        /* Retrieve the LETTER from the Intent extras
         // intent.extras.getString returns String? (String or null)
         // so toString() guarantees that the value will be a String
         val letterId = "A"
-
-        val recyclerView = recycler_view_main
-        // Sets the LinearLayoutManager of the recyclerview
-        //recyclerView.layoutManager = LinearLayoutManager(this)
-        // recyclerView.adapter = LetterAdapter()
-        chooseLayout()
 
 
         // Adds a [DividerItemDecoration] between items
@@ -43,6 +52,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
@@ -101,6 +112,4 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
-}
+*/

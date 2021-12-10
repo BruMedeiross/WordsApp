@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordsApp">
+        <!--
+        Depois de excluir a DetailActivity, você terá dois fragmentos (LetterListFragment e WordListFragment)
+        e uma única atividade (MainActivity). O activity_main.xml para que ele possa exibir e navegar entre fragmentos, em vez de ter um layout estático.
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
+            -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
